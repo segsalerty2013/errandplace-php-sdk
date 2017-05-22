@@ -1,5 +1,5 @@
-ErrandPlace PHP client library for Errands & Logistics Integrations
-========================================================================
+PHP client for Errands & Logistics Integrations
+===============================================
 
 - To know more about how to access errandplace free services, Visit  [www.errandplace.com](http://errandplace.com)
 
