@@ -1,0 +1,26 @@
+{
+    "name": "errandplace/errandplace",
+    "version": "0.0.1",
+    "description": "PHP SDK for errandplace tools and integrations",
+    "type": "library",
+    "require": {
+        "php": "^5.3.3 || ^7.0",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev":{
+        "phpunit/phpunit": "5.6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Errandplace\\": "src/",
+            "test\\":"test/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Musty",
+            "email": "segsalerty@yahoo.com"
+        }
+    ]
+}
