@@ -1,1 +1,8 @@
 /vendor/
+# remome some core classes
+/data/PriceObject.php
+/Pricing.php
+/data/ZoneObject.php
+/Zone.php
+/Route.php
+/data/RouteObject.php

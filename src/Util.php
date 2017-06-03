@@ -24,5 +24,11 @@ class Util{
         $body = json_decode($client->request('POST', '/vendor/name/check', ['json' => ['name' => $name]])->getBody()->getContents());
         return (object)['status'=>$body->code=='00'?true:false, 'message'=>$body->message];
     }
+    
+    public static function states(Config $config, $country='nigeria'){
+        $client = self::getClient($config);   
+        $body = json_decode($client->request('GET', '/location/'.$country.'/states')->getBody()->getContents());
+        return (object)['status'=>$body->code=='00'?true:false, 'message'=>$body->message, 
+            'data'=> array_combine($body->data, $body->data)];
+    }
 }
-
