@@ -31,4 +31,18 @@ class Util{
         return (object)['status'=>$body->code=='00'?true:false, 'message'=>$body->message, 
             'data'=> array_combine($body->data, $body->data)];
     }
+    
+    /**
+     * Search for areas recognized in our system
+     * @param \Errandplace\Config $config
+     * @param type $keyword
+     * @param type $country
+     * @return type
+     */
+    public static function locationLookup(Config $config, $keyword="", $country='nigeria'){
+        $client = self::getClient($config);   
+        $body = json_decode($client->request('GET', '/routes/match?country='.$country.'&keyword='.$keyword)->getBody()->getContents());
+        return (object)['status'=>$body->code=='00'?true:false, 'message'=>$body->message, 
+            'data'=> $body->data];
+    }
 }
