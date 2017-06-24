@@ -24,6 +24,17 @@ class Errand{
             'data'=>isset($body->data->ref)?$body->data->ref:null];    
     }
     
+    public static function queryFeedback(Config $config, $payload, $channel='php-sdk'){
+        $client = Util::getClient($config);
+        $payload['channel'] = $channel;
+        $payload['respond'] = true;
+        $body = json_decode($client->request('POST', '/logistics/query', [
+            'json' => $payload
+        ])->getBody()->getContents());
+        return (object)['status'=>$body->code == "00"?true:false, 'message'=>$body->message, 
+            'data'=>isset($body->data)?$body->data:null];    
+    }
+    
     public static function pull(Config $config, $id){
         $client = Util::getClient($config);
         $body = json_decode($client->request('GET', '/logistics/pull/'.$id)->getBody()->getContents());
