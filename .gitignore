@@ -1,8 +1,10 @@
 /vendor/
-# remome some core classes
+# remove some core classes... haha
 /src/data/PriceObject.php
 /src/Pricing.php
 /src/data/ZoneObject.php
 /src/Zone.php
 /src/Route.php
+/src/Settlement.php
+/src/data/SettlementObject.php
 /src/data/RouteObject.php

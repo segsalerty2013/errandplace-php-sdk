@@ -35,13 +35,26 @@ class Util{
     /**
      * Search for areas recognized in our system
      * @param \Errandplace\Config $config
-     * @param type $keyword
+     * @param string $keyword
      * @param type $country
+     * @param type $state
+     * @param type $custom
      * @return type
      */
-    public static function locationLookup(Config $config, $keyword="", $country='nigeria'){
-        $client = self::getClient($config);   
-        $body = json_decode($client->request('GET', '/routes/match?country='.$country.'&keyword='.$keyword)->getBody()->getContents());
+    public static function locationLookup(Config $config, $keyword="", $country='nigeria', $state='', $custom=false, $group=false){
+        $client = self::getClient($config);
+        if($custom){
+            $keyword.="&only_custom=true&state=".$state;
+        }
+        $body = json_decode($client->request('GET', '/routes/match?country='.$country
+                .'&keyword='.$keyword."&group=".$group)->getBody()->getContents());
+        return (object)['status'=>$body->code=='00'?true:false, 'message'=>$body->message, 
+            'data'=> $body->data];
+    }
+    
+    public static function getLga(Config $config, $state, $country='nigeria'){
+        $client = self::getClient($config);
+        $body = json_decode($client->request('GET', '/location/'.$country.'/lga?state='.$state)->getBody()->getContents());
         return (object)['status'=>$body->code=='00'?true:false, 'message'=>$body->message, 
             'data'=> $body->data];
     }

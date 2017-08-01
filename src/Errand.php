@@ -35,6 +35,12 @@ class Errand{
             'data'=>isset($body->data)?$body->data:null];    
     }
     
+    public static function track(Config $config, $tracking_id){
+        $client = Util::getClient($config);
+        $body = json_decode($client->request('GET', '/logistics/track/'.$tracking_id)->getBody()->getContents());
+        return (object)['status'=>$body->code == '00'?true:false, 'message'=>$body->message, 'data'=>$body->data];
+    }
+
     public static function pull(Config $config, $id){
         $client = Util::getClient($config);
         $body = json_decode($client->request('GET', '/logistics/pull/'.$id)->getBody()->getContents());

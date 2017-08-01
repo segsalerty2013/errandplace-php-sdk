@@ -15,7 +15,14 @@ class PartnerObject extends DataObject{
     public $visibility;
     public $module;
     public $measurement;
-    
+    public $flat_commision;
+    public $flat_commision_amount;
+    public $percentage_commision;
+    public $percentage_value;
+    public $notification_charges_amount;
+    public $settlement_bank;
+    public $settlement_account;
+
     protected $zones;
     
     public function getZones() {

@@ -25,7 +25,7 @@ class DataObject{
         $ret = [];
         $arr = get_object_vars($this);
         foreach ($arr as $key=>$value){
-            if($value){
+            if($value !== null){
                 $ret[$key] = $value;
             }
         }
